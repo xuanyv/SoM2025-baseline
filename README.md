@@ -42,3 +42,28 @@ The SoM2025 challenge evaluates how well a WiFi-oriented foundation model (WiFo-
 Place the **official dataset** under `./dataset/` (see the download section below).  
 Each task has a consistent, lightweight format intended for easy NumPy loading.
 
+dataset/
+├── Task1/
+│   ├── train/
+│   │   ├── H_pilot.npy        # (N1, 4, 32, 64) sparse pilots
+│   │   ├── pilot_mask.npy     # (N1, 4, 32, 64) boolean/binary pilot mask
+│   │   └── H_full.npy         # (N1, 4, 32, 64) full ground-truth channels (target)
+│   ├── val/                   # same files as train (smaller N)
+│   └── test/
+│       ├── H_pilot.npy        # (T1, 4, 32, 64)
+│       └── pilot_mask.npy     # (T1, 4, 32, 64)
+├── Task2/
+│   ├── train/
+│   │   ├── H.npy              # (N2, 24, 8, 128) channel tensors
+│   │   └── y.npy              # (N2,) int {0=NLoS, 1=LoS}
+│   ├── val/                   # (H.npy, y.npy)
+│   └── test/
+│       └── H.npy              # (T2, 24, 8, 128)
+└── Task3/
+    ├── train/
+    │   ├── H.npy              # (N3, 1, 128, 32) channel tensors
+    │   └── y.npy              # (N3, 2) continuous (x, y) in meters
+    ├── val/                   # (H.npy, y.npy)
+    └── test/
+        └── H.npy              # (T3, 1, 128, 32)
+
