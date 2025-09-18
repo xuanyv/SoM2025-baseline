@@ -1,134 +1,44 @@
-# ? SoM2025 Challenge Baseline
+# SoM2025 Baseline (Official) â€“ README
 
-±¾²Ö¿âÌá¹© **SoM2025: Adapting WiFo for Wireless Physical Layer Tasks** µÄ¹Ù·½ Baseline ÊµÏÖ¡£²ÎÈüÕß¿ÉÔÚ´Ë»ù´¡ÉÏ×ö **Ä£ĞÍÎ¢µ÷¡¢²ÎÊıÓÅ»¯¡¢ÇáÁ¿»¯** µÈ¸Ä½ø¡£
-
----
-
-## 1) ÈüÌâÓëÊı¾İ¸ÅÀÀ
-
-±¾ÌôÕ½»ùÓÚ **Ô¤ÑµÁ· WiFo-Base Ä£ĞÍ**£¬°üº¬Èı¸öÎïÀí²ãÈÎÎñ£º
-
-¡ñ ÈüÌâÒ»£ºÏ¡Êèµ¼ÆµĞÅµÀ¹À¼Æ£¨Channel Estimation£©
-- Ä¿±ê£ºÀûÓÃµ¼ÆµÎ»ÖÃµÄ¹Û²â¶ÔÍêÕûĞÅµÀ¾ØÕó½øĞĞ»Ö¸´/ÄÚ²å¡£
-- Êı¾İÀ´Ô´£ºQuadriga
-- ³¡¾°£ºUMa NLoS
-- ÑµÁ·Ñù±¾£º900
-- ĞÅµÀÎ¬¶È£º4 ¡Á 32 ¡Á 64
-- ÈÎÎñÏà¹ØÅäÖÃ£ºµ¼ÆµÃ¿ 4 ¸ö×ÓÔØ²¨·ÅÖÃ
-- Baseline Ö¸±ê£ºNMSE = 0.318
-
-¡ñ ÈüÌâ¶ş£ºLoS / NLoS ÅĞ±ğ£¨Link Type Classification£©
-- Ä¿±ê£º¸ù¾İĞÅµÀÊı¾İÅĞ¶ÏÊÇ·ñÎª LoS¡£
-- Êı¾İÀ´Ô´£ºQuadriga
-- ³¡¾°£ºUMi LoS + UMi NLoS
-- ÑµÁ·Ñù±¾£º300
-- ĞÅµÀÎ¬¶È£º24 ¡Á 8 ¡Á 128
-- Baseline Ö¸±ê£ºF1 = 0.828
-
-¡ñ ÈüÌâÈı£ºÊÓ¾õ¸¨ÖúÎŞÏß¶¨Î»£¨Vision-aided Localization£©
-- Ä¿±ê£º½áºÏÊÓ¾õÓëĞÅµÀÊı¾İÊµÏÖ³µÁ¾Î»ÖÃ¾«×¼¶¨Î»¡£
-- Êı¾İÀ´Ô´£ºSynthSoM
-- ³¡¾°£ºCross Road
-- ÑµÁ·Ñù±¾£º500
-- ĞÅµÀÎ¬¶È£º1 ¡Á 128 ¡Á 32
-- Baseline Ö¸±ê£ºMAE = 9.83
-
-×ÛºÏ Baseline ×Ü·Ö£¨ÏŞÖÆÔÚ 0~1£©£º
-((1 - 0.318/1.000) + 0.828 + (1 - 9.83/20)) ¡Á (1 + 0.11)/3.6 ¡Ö 0.622
+> **Adapting WiFo for Wireless Physical-Layer Tasks.**  
+> This repository provides the **official baseline** for the **SoM2025 Challenge**.  
+> It includes training scripts for the three tasks, instructions to reproduce the scores, and the **expected submission format**.
 
 ---
 
-## 2) Êı¾İ¼¯¹¹³ÉÓë¸ñÊ½
+## 1) Challenge Overview
 
-ÏÂÔØ¹Ù·½Êı¾İ¼¯ºó·ÅÈëÏîÄ¿¸ùÄ¿Â¼µÄ `./dataset/` ÏÂ£¨Á´½Ó¼ûÏÂ½Ú£©¡£Ä¿Â¼½á¹¹½¨ÒéÈçÏÂ£º
+The SoM2025 challenge evaluates how well a WiFi-oriented foundation model (WiFo-Base) can be **adapted** to multiple wireless physical-layer tasks via fine-tuning.
 
-dataset/
-©À©¤ Task1/           # ĞÅµÀ¹À¼ÆÊı¾İ£¨.npy / .pt£©£¬shape: [N, 4, 32, 64]
-©¦  ©À©¤ X_train.mat ...
-©¦  ©¸©¤ X_val.mat   ...
-©À©¤ Task2/           # LoS/NLoS ·ÖÀàÊı¾İ£¬shape: [N, 24, 8, 128]£»±êÇ© 0/1
-©¦  ©À©¤ X_train.mat ...
-©¦  ©¸©¤ X_val.mat   ...
-©¸©¤ Task3/           # ¶¨Î»Êı¾İ£¬ÊäÈë shape: [N, 1, 128, 32]£»Ä¿±êÎªÎ»ÖÃÏòÁ¿
-©¦  ©À©¤ X_train.mat ...
-©¦  ©¸©¤ X_val.mat   ...
+**Tasks (from the slide):**
 
-ÈçÊ¹ÓÃ×Ô¶¨Òå¸ñÊ½£¬ÇëÔÚ¸÷ÈÎÎñ½Å±¾ÖĞÊÊÅäÏàÓ¦µÄ `Dataset` ¶ÁÈ¡Âß¼­¡£
+- **Task 1 â€“ Channel Estimation from Pilots**  
+  Reconstruct the **full channel matrix** from sparse pilots (interpolation / recovery).
 
----
+- **Task 2 â€“ LoS vs. NLoS Classification**  
+  Predict whether a radio link contains a **Line-of-Sight** path.
 
-## 3) ¿ìËÙ¿ªÊ¼£¨»·¾³ÓëÒÀÀµ£©
+- **Task 3 â€“ (Vision-assisted) Wireless Vehicle Localization**  
+  Estimate precise vehicle position from channel data (the baseline uses channel features only).
 
-1) ¿ËÂ¡²Ö¿â
-git clone https://github.com/SoM2025/Baseline.git
-cd Baseline
+**Data sources and settings (as shown in the slide):**
 
-2) ´´½¨Óë¼¤»î»·¾³£¨ÈÎÑ¡Ò»·¨£©
-# Conda
-conda create -n som2025 python=3.9 -y
-conda activate som2025
-# »ò venv
-python -m venv .venv && source .venv/bin/activate    # Windows Ê¹ÓÃ .venv\Scripts\activate
+| Item | Task 1 | Task 2 | Task 3 |
+|---|---|---|---|
+| **Generator** | Quadriga | Quadriga | SynthSoM |
+| **Scenario** | UMa-NLoS | UMi-LoS + UMi-NLoS | Cross-Road |
+| **# Train Samples** | 900 | 300 | 500 |
+| **Channel Tensor Dim.** | `4 Ã— 32 Ã— 64` | `24 Ã— 8 Ã— 128` | `1 Ã— 128 Ã— 32` |
+| **Pilot/Config** | pilots on every 4 subcarriers | â€” | â€” |
+| **Baseline Metric** | NMSE = **0.318** | F1 = **0.828** | MAE = **9.83** |
 
-3) °²×°ÒÀÀµ
-pip install -r requirements.txt
- 
----
-
-## 4) ÏÂÔØ¹Ù·½Êı¾İ¼¯
-
-Çë´ÓÒÔÏÂµØÖ·ÏÂÔØ²¢½âÑ¹µ½ÏîÄ¿¸ùÄ¿Â¼µÄ ./dataset/ ÏÂ£º
-¡¾¹Ù·½Êı¾İ¼¯ÏÂÔØ¡¿https://YOUR-DATA-HOST/som2025-dataset
-£¨ÈçÎªË½ÓĞÏÂÔØ£¬ÇëÌæ»»ÎªÊµ¼ÊÁ´½Ó£»±£³Ö Task1/Task2/Task3 ×ÓÄ¿Â¼½á¹¹²»±ä£©
+> **Overall score (illustrative from slide):**  
+> Combined/normalized across tasks with a 0â€“1 cap.
 
 ---
 
-## 5) ÑµÁ·ÓëÆÀ²â
+## 2) Dataset Structure & File Formats
 
-·Ö±ğÔËĞĞÏÂÁĞ½Å±¾ÑµÁ·ÈıÏîÈÎÎñ£¨»á×Ô¶¯ÔÚ ./logs ÏÂ±£´æÄ£ĞÍÓë½á¹û£©£º
+Place the **official dataset** under `./dataset/` (see the download section below).  
+Each task has a consistent, lightweight format intended for easy NumPy loading.
 
-# ÈüÌâÒ»£ºĞÅµÀ¹À¼Æ
-python main_fine_tune_T1.py
-
-# ÈüÌâ¶ş£ºLoS/NLoS ÅĞ±ğ
-python main_fine_tune_T2.py
-
-# ÈüÌâÈı£ºÊÓ¾õ¸¨Öú¶¨Î»
-python main_fine_tune_T3.py
- 
----
-
-## 6) Ìá½»¹æ·¶£¨submission£©
-
-¡ñ Ìá½»ÎÄ¼şÒ»£ºÍÆÀí½á¹û JSON£¨Óë submission_demo.json ¸ñÊ½Ò»ÖÂ£©
-ÎÄ¼şÃû£ºsubmission.json
-¸ñÊ½£º
-{
-  "Task1": Array_t1,  // ĞÅµÀ¹À¼Æ£ºÔ¤²â¾ØÕó£¬½¨Òé shape [N, 4, 32, 64]
-  "Task2": Array_t2,  // LoS/NLoS£ºÔ¤²â±êÇ©Êı×é£¨0/1£©£¬shape [N] »ò [N, 1]
-  "Task3": Array_t3   // ¶¨Î»£ºÎ»ÖÃÔ¤²â¾ØÕó£¬Ä¬ÈÏ shape [N, 2] ±íÊ¾ (x, y)
-}
-
-×¢Òâ£º
-- JSON ÖĞµÄÊı×éÓ¦Îª¿ÉĞòÁĞ»¯µÄÇ¶Ì×ÁĞ±í£¨list of lists£©¡£
-- ²»Òª°üº¬ NaN/Inf£»ÇëÊ¹ÓÃ float/ÕûÊı¡£
-
-¡ñ Ìá½»ÎÄ¼ş¶ş£ºÆ½¾ùÑµÁ·²ÎÊıÁ¿£¨±ØÌî£©
-- Í³¼Æ·½·¨£ºÑµÁ·Ê±¿É¼ÇÂ¼ "Ä£ĞÍÖĞ requires_grad µÄ²ÎÊı×ÜÁ¿" ×÷Îª¿ÉÑµÁ·²ÎÊıÁ¿£¨ÈôÊ¹ÓÃ LoRA/Adapter µÈ£¬½öÍ³¼Æ¿ÉÑµÁ·²¿·Ö£©£»²»Í¬½×¶ÎÈô²ÎÊı¹æÄ£ÓĞ±ä»¯£¬¿É°´ÑµÁ·ÆÚ¼äµÄÊ±³¤/epoch ¼ÓÈ¨Æ½¾ù¡£
- 
-
-- ²Î¿¼Í³¼Æ½Å±¾£¨PyTorch£©£º
-# tools/count_params.py
-import torch
-def count_trainable_params(model):
-    return sum(p.numel() for p in model.parameters() if p.requires_grad)
- 
----
-
-## 7) Ğí¿ÉÖ¤ÓëÖÂĞ»
-
-- Ô¤ÑµÁ·»ù×ù£ºWiFo£¨¿ªÔ´µØÖ·Çë²Î¿¼ÏîÄ¿Ö÷Ò³/ÂÛÎÄÒıÓÃ£©
-- ±¾ Baseline ½öÓÃÓÚ SoM2025 ÌôÕ½ÈüÑ§ÊõÆÀ²âÄ¿µÄ¡£
-- ÈôÔÚÂÛÎÄ»ò±¨¸æÖĞÊ¹ÓÃ±¾ÏîÄ¿£¬ÇëÔÚÒıÓÃÖĞÖÂĞ» SoM2025 ×éÎ¯»áÓë WiFo ÏîÄ¿¡£
-
-×£¸÷Î»ÔÚ SoM2025 ÌôÕ½ÈüÖĞÈ¡µÃÓÅÒì³É¼¨£¡
