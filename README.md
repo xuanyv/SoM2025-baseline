@@ -15,7 +15,7 @@ The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to m
 - **Task 2 – LoS vs. NLoS Classification**
   Predict whether a radio link contains a **Line-of-Sight** path.
 
-- **Task 3 – (Vision-aided) Wireless Vehicle Localization**
+- **Task 3 – (Vision-aided) Wireless Localization**
   Estimate precise vehicle position from channel data (the baseline uses channel features only).
 
 **Data sources and settings:**
@@ -108,7 +108,7 @@ python main_fine_tune_T2.py
 **Metric:** F1 score (higher is better).
 The baseline reaches **~0.828 F1**.
 
-### 4.3 Task 3 – Vehicle Localization
+### 4.3 Task 3 – (Vision-aided) Wireless Localization
 
 ```bash
 python main_fine_tune_T3.py 
@@ -235,6 +235,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
 
 
