@@ -234,7 +234,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
-```
+
 
 
 
