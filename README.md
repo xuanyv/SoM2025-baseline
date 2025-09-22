@@ -24,9 +24,9 @@ The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to m
 |---|---|---|---|
 | **Generator** | Quadriga | Quadriga | SynthSoM |
 | **Scenario** | UMa-NLoS | UMi-LoS + UMi-NLoS | Cross-Road |
-| **# Train Samples** | 900 | 300 | 500 |
+| **Trainning Samples** | 900 | 300 | 500 |
 | **Channel Tensor Dim.** | `4 × 32 × 64` | `24 × 8 × 128` | `1 × 128 × 32` |
-| **Pilot/Config** | pilots on every 4 subcarriers | — | — |
+| **Other Config** | N_pilots=16 | — | — |
 | **Baseline Metric** | NMSE = **0.318** | F1 = **0.828** | MAE = **9.83** |
 
 > **Overall score:**
@@ -235,6 +235,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
 
 
