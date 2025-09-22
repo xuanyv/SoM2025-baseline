@@ -42,8 +42,8 @@ Each task has a consistent, lightweight format intended for easy NumPy loading.
 ```
 dataset/
 ├── Task1/
-│   ├── X_pilot_train.mat    # (N1, 4, 32, 16)  sparse pilots
-│   ├── X_train.mat          # (N1, 4, 32, 64)  ull ground-truth channels (target)
+│   ├── X_pilot_train.mat    # (N1, 4, 32, 16)  channels at sparse pilots
+│   ├── X_train.mat          # (N1, 4, 32, 64)  ground-truth channels (target)
 │   └── ...
 ├── Task2/
 │   ├── X_train.mat          # (N2, 24, 8, 128) channel tensors
@@ -66,14 +66,13 @@ We recommend Python **3.10+** and CUDA-enabled PyTorch (optional but recommended
 
 ```bash
 # (Optional) Create a fresh virtual environment
-python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
+conda create -n som2025 python=3.10 -y
+conda activate som2025
 
 # Install dependencies
 pip install -U pip
 pip install -r requirements.txt
 ```
-
 > You may pin CUDA-specific wheels for PyTorch according to your platform.
 
 ### 3.2 Download the Official Dataset
@@ -211,6 +210,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
 > - [ ] You included **`avg_trainable_params`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
+
 
 
 
