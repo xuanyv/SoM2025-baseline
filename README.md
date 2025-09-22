@@ -1,6 +1,6 @@
 # SoM2025 Baseline (Official) – README
 
-> This repository provides the **official baseline** for the **SoM2025 Challenge: Adapting WiFo for Wireless Physical-Layer Tasks.**.
+> This repository provides the **official baseline** for the **SoM2025 Challenge: Adapting WiFo for Wireless Physical-Layer Tasks.**
 > It includes training scripts for the three tasks, instructions to reproduce the scores, and the **expected submission format**.
 
 ## 1) Challenge Overview
@@ -210,6 +210,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
 > - [ ] You included **`avg_trainable_params`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
+
 
 
 
