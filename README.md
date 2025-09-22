@@ -139,8 +139,8 @@ After training with the official dataset and default hyper-parameters, your vali
 
 Submit **two files**:
 
-1) **Predictions JSON**: `submission.json` (see `[submission_demo.json](https://huggingface.co/datasets/PPASS/som2025/tree/main)` for reference)
-2) **Average Trainable Parameters**: `avg_trainable_params.txt` (see below)
+1) **Predictions JSON**: `submission.json` (see [submission_demo.json](https://huggingface.co/datasets/PPASS/som2025/tree/main) for reference)
+2) **Average Trainable Parameters** 
 
 ### 6.1 Predictions JSON
 
@@ -183,57 +183,35 @@ with open("submission.json", "w") as f:
 ### 6.2 Average Trainable Parameters
 
 Report the **average number of trainable parameters** used by your fine-tuning scheme (e.g., full-tuning vs. LoRA/PEFT).
-Save a single number to `avg_trainable_params.txt` (float or int; same count used for all three tasks or the average across the three, depending on your method).
-
-Example:
-
-```
-# avg_trainable_params.txt
-5.2e6
-```
-
+After computing the average across the three tasks, you'll fill this value into the submission interface.
+ 
 A helper in PyTorch:
 
 ```python
 total = sum(p.numel() for p in model.parameters() if p.requires_grad)
 print(total)
 ```
+ 
+ 
 
 ---
 
-
-
-
-## 7) Citation
-
-If you find this baseline useful in your work or publication, please cite the SoM2025 challenge and this repository.
-
-```bibtex
-@misc{SoM2025Baseline,
-  title  = {SoM2025: Adapting WiFo for Wireless Physical-Layer Tasks — Official Baseline},
-  year   = {2025},
-  note   = {GitHub repository},
-  howpublished = {\url{<REPO_URL>}}
-}
-```
-
----
-
-## 8) License
+## 7) License
 
 This baseline is released under the **Apache 2.0** License (unless otherwise specified in the repo).
 
 ---
 
-## 9) Contact
+## 8) Contact
 
-For questions or issues, please open a GitHub Issue or reach the organizers at **[INSERT CONTACT/EMAIL]**.
+For questions or issues, please open a GitHub Issue or reach the organizers at **xyliu25@stu.pku.edu.cn**.
 
 > **Checklist before you submit**
 > - [ ] You trained with the **official dataset** and default splits
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
-> - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
+> - [ ] You included **`avg_trainable_params`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
+
 
 
 
