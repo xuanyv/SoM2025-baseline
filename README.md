@@ -1,16 +1,13 @@
 # SoM2025 Baseline (Official) – README
 
-> **Adapting WiFo for Wireless Physical-Layer Tasks.**
-> This repository provides the **official baseline** for the **SoM2025 Challenge**.
+> This repository provides the **official baseline** for the **SoM2025 Challenge: Adapting WiFo for Wireless Physical-Layer Tasks.**.
 > It includes training scripts for the three tasks, instructions to reproduce the scores, and the **expected submission format**.
-
----
 
 ## 1) Challenge Overview
 
-The SoM2025 challenge evaluates how well a WiFi-oriented foundation model (WiFo-Base) can be **adapted** to multiple wireless physical-layer tasks via fine-tuning.
+The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to multiple wireless physical-layer tasks through fine-tuning.
 
-**Tasks (from the slide):**
+**Tasks:**
 
 - **Task 1 – Channel Estimation from Pilots**
   Reconstruct the **full channel matrix** from sparse pilots (interpolation / recovery).
@@ -18,10 +15,10 @@ The SoM2025 challenge evaluates how well a WiFi-oriented foundation model (WiFo-
 - **Task 2 – LoS vs. NLoS Classification**
   Predict whether a radio link contains a **Line-of-Sight** path.
 
-- **Task 3 – (Vision-assisted) Wireless Vehicle Localization**
+- **Task 3 – (Vision-aided) Wireless Vehicle Localization**
   Estimate precise vehicle position from channel data (the baseline uses channel features only).
 
-**Data sources and settings (as shown in the slide):**
+**Data sources and settings:**
 
 | Item | Task 1 | Task 2 | Task 3 |
 |---|---|---|---|
@@ -333,3 +330,4 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
