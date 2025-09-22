@@ -53,7 +53,7 @@ dataset/
     ├── X_train.mat          # (N3, 1, 128, 32) channel tensors
     ├── imgs_train.mat       # (N3, 3, 512, 512) rgb
     ├── location_train.mat   # (N3, 2)  continuous (x, y) in meters
-│   └── ...
+    └── ...
 ```
  
 ---
@@ -235,6 +235,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
 
 
