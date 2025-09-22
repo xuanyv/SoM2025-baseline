@@ -36,37 +36,26 @@ The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to m
 
 ## 2) Dataset Structure & File Formats
 
-Place the **official dataset** under `./dataset/` (see the download section below).
+Place the **[official dataset](https://huggingface.co/datasets/PPASS/som2025/tree/main)** under `./dataset/` (see the download section below).
 Each task has a consistent, lightweight format intended for easy NumPy loading.
 
 ```
 dataset/
 ├── Task1/
-│   ├── train/
-│   │   ├── H_pilot.npy        # (N1, 4, 32, 64)  sparse pilots
-│   │   ├── pilot_mask.npy     # (N1, 4, 32, 64)  boolean/binary mask for pilots
-│   │   └── H_full.npy         # (N1, 4, 32, 64)  full ground-truth channels (target)
-│   ├── val/   (same files as train, smaller N)
-│   └── test/  (H_pilot.npy, pilot_mask.npy)      # no labels
+│   ├── X_pilot_train.mat    # (N1, 4, 32, 16)  sparse pilots
+│   ├── X_train.mat          # (N1, 4, 32, 64)  ull ground-truth channels (target)
+│   └── ...
 ├── Task2/
-│   ├── train/
-│   │   ├── H.npy              # (N2, 24, 8, 128) channel tensors
-│   │   └── y.npy              # (N2,) int {0=NLoS, 1=LoS}
-│   ├── val/   (H.npy, y.npy)
-│   └── test/  (H.npy)         # no labels
+│   ├── X_train.mat          # (N2, 24, 8, 128) channel tensors
+│   ├── L_train.mat          # (N2,) int {0=NLoS, 1=LoS}
+│   └── ...
 └── Task3/
-    ├── train/
-    │   ├── H.npy              # (N3, 1, 128, 32) channel tensors
-    │   └── y.npy              # (N3, 2)  continuous (x, y) in meters
-    ├── val/   (H.npy, y.npy)
-    └── test/  (H.npy)         # no labels
+    ├── X_train.mat          # (N3, 1, 128, 32) channel tensors
+    ├── imgs_train.mat       # (N3, 3, 512, 512) rgb
+    ├── location_train.mat   # (N3, 2)  continuous (x, y) in meters
+│   └── ...
 ```
-
-> Notes
-> • Shapes follow the slide’s channel dimensions.
-> • If visual frames are provided in later phases, they are optional for the baseline and can be ignored.
-> • `.npy` means standard NumPy array saved via `np.save`; boolean masks are `uint8`/`bool`.
-
+ 
 ---
 
 ## 3) Getting Started
@@ -330,4 +319,5 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
