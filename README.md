@@ -29,7 +29,7 @@ The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to m
 | **Pilot/Config** | pilots on every 4 subcarriers | — | — |
 | **Baseline Metric** | NMSE = **0.318** | F1 = **0.828** | MAE = **9.83** |
 
-> **Overall score (illustrative from slide):**
+> **Overall score:**
 > Combined/normalized across tasks with a 0–1 cap.
 
 ---
@@ -74,37 +74,13 @@ pip install -U pip
 pip install -r requirements.txt
 ```
 
-A minimal `requirements.txt` is included:
-
-```text
-torch>=2.1.0
-torchvision>=0.16.0
-numpy>=1.24.0
-scipy>=1.10.0
-scikit-learn>=1.3.0
-einops>=0.7.0
-tqdm>=4.66.0
-matplotlib>=3.8.0
-pyyaml>=6.0.0
-```
-
 > You may pin CUDA-specific wheels for PyTorch according to your platform.
 
 ### 3.2 Download the Official Dataset
 
 Download the official release and unzip it to `./dataset/`:
 
-- **Official download:** **$$
-INSERT THE OFFICIAL LINK HERE
-$$**
-  (e.g., GitHub Release / Drive / OSS. After download, your tree should match the layout above.)
-
-```bash
-# Example (replace the URL with the official one)
-mkdir -p dataset
-# wget https://<official-link>/SoM2025_dataset.zip
-# unzip SoM2025_dataset.zip -d dataset
-```
+- **Official download:[Link](https://huggingface.co/datasets/PPASS/som2025/tree/main)**
 
 ---
 
@@ -117,11 +93,7 @@ Each task has a single entry-point script. **No extra setup** is required beyond
 ### 4.1 Task 1 – Channel Estimation
 
 ```bash
-python main_fine_tune_T1.py \
-  --data_dir ./dataset/Task1 \
-  --out_dir  ./outputs/t1 \
-  --epochs   100 \
-  --batch_size 32
+python main_fine_tune_T1.py 
 ```
 
 **Metric:** NMSE (lower is better).
@@ -130,11 +102,7 @@ The baseline reaches **~0.318 NMSE** as shown in the slide with default settings
 ### 4.2 Task 2 – LoS/NLoS Classification
 
 ```bash
-python main_fine_tune_T2.py \
-  --data_dir ./dataset/Task2 \
-  --out_dir  ./outputs/t2 \
-  --epochs   60 \
-  --batch_size 64
+python main_fine_tune_T2.py 
 ```
 
 **Metric:** F1 score (higher is better).
@@ -143,11 +111,7 @@ The baseline reaches **~0.828 F1**.
 ### 4.3 Task 3 – Vehicle Localization
 
 ```bash
-python main_fine_tune_T3.py \
-  --data_dir ./dataset/Task3 \
-  --out_dir  ./outputs/t3 \
-  --epochs   120 \
-  --batch_size 32
+python main_fine_tune_T3.py 
 ```
 
 **Metric:** MAE in meters (lower is better).
@@ -175,7 +139,7 @@ After training with the official dataset and default hyper-parameters, your vali
 
 Submit **two files**:
 
-1) **Predictions JSON**: `submission.json` (see `submission_demo.json` for reference)
+1) **Predictions JSON**: `submission.json` (see `[submission_demo.json](https://huggingface.co/datasets/PPASS/som2025/tree/main)` for reference)
 2) **Average Trainable Parameters**: `avg_trainable_params.txt` (see below)
 
 ### 6.1 Predictions JSON
@@ -237,58 +201,10 @@ print(total)
 
 ---
 
-## 7) Reproducing This Baseline End-to-End
 
-```bash
-# Task 1
-python main_fine_tune_T1.py --data_dir ./dataset/Task1 --out_dir ./outputs/t1
-# Task 2
-python main_fine_tune_T2.py --data_dir ./dataset/Task2 --out_dir ./outputs/t2
-# Task 3
-python main_fine_tune_T3.py --data_dir ./dataset/Task3 --out_dir ./outputs/t3
 
-# Produce submission.json from your best checkpoints
-python tools/export_submission.py \
-  --t1_ckpt ./outputs/t1/best.ckpt \
-  --t2_ckpt ./outputs/t2/best.ckpt \
-  --t3_ckpt ./outputs/t3/best.ckpt \
-  --out submission.json
-```
 
-> `tools/export_submission.py` is a thin wrapper that loads each best checkpoint, runs inference on the official test splits, and writes `submission.json`.
-
----
-
-## 8) Evaluation & Scoring
-
-- **Task 1**: NMSE (lower is better).
-- **Task 2**: F1 score (higher is better).
-- **Task 3**: MAE in meters (lower is better).
-
-The leaderboard computes a **normalized composite score** across the three tasks (0–1 range), consistent with the slide’s example.
-
----
-
-## 9) Folder Layout
-
-```
-.
-├── main_fine_tune_T1.py
-├── main_fine_tune_T2.py
-├── main_fine_tune_T3.py
-├── models/                 # backbones, adapters (PEFT/LoRA), heads
-├── data/                   # dataset loaders / transforms
-├── tools/                  # export_submission.py, metrics, utils
-├── configs/                # default YAMLs per task
-├── dataset/                # <-- put the official data here
-├── outputs/                # checkpoints, logs, metrics (auto-created)
-├── requirements.txt
-└── submission_demo.json
-```
-
----
-
-## 10) Citation
+## 7) Citation
 
 If you find this baseline useful in your work or publication, please cite the SoM2025 challenge and this repository.
 
@@ -303,13 +219,13 @@ If you find this baseline useful in your work or publication, please cite the So
 
 ---
 
-## 11) License
+## 8) License
 
 This baseline is released under the **Apache 2.0** License (unless otherwise specified in the repo).
 
 ---
 
-## 12) Contact
+## 9) Contact
 
 For questions or issues, please open a GitHub Issue or reach the organizers at **[INSERT CONTACT/EMAIL]**.
 
@@ -319,5 +235,6 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
 
