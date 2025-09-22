@@ -20,7 +20,7 @@ The SoM2025 challenge evaluates how effectively WiFo-Base can be **adapted** to 
 
 **Data sources and settings:**
 
-| Item | Task 1 | Task 2 | Task 3 |
+| Item | Task 1(Channel Estimation) | Task 2(LoS/NLoS Classification) | Task 3(Vision-aided Wireless Localization) |
 |---|---|---|---|
 | **Generator** | Quadriga | Quadriga | SynthSoM |
 | **Scenario** | UMa-NLoS | UMi-LoS + UMi-NLoS | Cross-Road |
@@ -37,7 +37,7 @@ The SoM2025 challenge evaluates how effectively WiFo-Base can be **adapted** to 
 ## 2) Dataset Structure & File Formats
 
 Place the **[official dataset](https://huggingface.co/datasets/PPASS/som2025/tree/main)** under `./dataset/` (see the download section below).
-Each task has a consistent, lightweight format intended for easy NumPy loading.
+Each task has a consistent format intended for easy NumPy loading.
 
 ```
 dataset/
@@ -210,6 +210,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
 > - [ ] You included **`avg_trainable_params`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
+
 
 
 
