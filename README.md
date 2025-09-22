@@ -5,7 +5,7 @@
 
 ## 1) Challenge Overview
 
-The SoM2025 challenge assesses how effectively WiFo-Base can be **adapted** to multiple wireless physical-layer tasks through fine-tuning.
+The SoM2025 challenge evaluates how effectively WiFo-Base can be **adapted** to multiple wireless physical-layer tasks through fine-tuning.
 
 **Tasks:**
 
@@ -210,6 +210,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You exported predictions to **`submission.json`** with keys `Task1/Task2/Task3`
 > - [ ] You included **`avg_trainable_params`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
+
 
 
 
