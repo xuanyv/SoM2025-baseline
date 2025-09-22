@@ -80,7 +80,7 @@ pip install -r requirements.txt
 
 Download the official release and unzip it to `./dataset/`:
 
-- **Official download:[Link](https://huggingface.co/datasets/PPASS/som2025/tree/main)**
+- **Official download: [Link](https://huggingface.co/datasets/PPASS/som2025/tree/main)**
 
 ---
 
@@ -235,6 +235,7 @@ For questions or issues, please open a GitHub Issue or reach the organizers at *
 > - [ ] You included **`avg_trainable_params.txt`** with the average trainable parameter count
 > - [ ] Your submission files are named exactly as required and are readable
 ```
+
 
 
 
